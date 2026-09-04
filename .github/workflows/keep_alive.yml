@@ -2,7 +2,7 @@ name: Keep PythonAnywhere Bot Alive
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # يشتغل تلقائيًا كل 6 ساعات
+    - cron: '0 * * * *'  # يشتغل تلقائيًا كل 6 ساعات
   workflow_dispatch:      # يتيح لك تشغيله يدوياً بضغطة زر للتجربة
 
 jobs:
