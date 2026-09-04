@@ -1,0 +1,17 @@
+name: Keep PythonAnywhere Bot Alive
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # يشتغل تلقائيًا كل 6 ساعات
+  workflow_dispatch:      # يتيح لك تشغيله يدوياً بضغطة زر للتجربة
+
+jobs:
+  restart-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Keep Alive Command
+        run: |
+          curl -X POST "https://www.pythonanywhere.com/api/v0/user/${{ secrets.PA_USERNAME }}/consoles/" \
+            -H "Authorization: Token ${{ secrets.PA_TOKEN }}" \
+            -d "executable=bash" \
+            -d "arguments=-c 'cd ~/VETBOT && ./keep_alive.sh'"
